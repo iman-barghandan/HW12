@@ -2,6 +2,7 @@ package domains;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,6 +11,10 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private long id;
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false , updatable = false)
+    private Date createAccountDate;
 
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
