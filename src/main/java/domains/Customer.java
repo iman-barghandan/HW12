@@ -1,7 +1,9 @@
 package domains;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -24,6 +26,9 @@ public class Customer {
     @Temporal(TemporalType.DATE)
     @Column(nullable = false , updatable = false)
     private Date register;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Account> accountList = new ArrayList<>();
 
 
     public Customer() {
@@ -75,5 +80,13 @@ public class Customer {
 
     public void setRegister(Date register) {
         this.register = register;
+    }
+
+    public List<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
     }
 }
