@@ -14,7 +14,7 @@ public class MainMenu {
             selectedNumber = ScannerClass.getNumber(1, 4);
 
             if (selectedNumber == 1) {
-
+                SignInMenu.show();
             } else if (selectedNumber == 2) {
                 SignUpMenu.showMenu();
             } else if (selectedNumber == 3) {
