@@ -62,8 +62,7 @@ public class AccountService {
                     System.out.println("-----------");
                 }
             }
-        }
-        else System.out.println("you have not account");
+        } else System.out.println("you have not account");
     }
 
 

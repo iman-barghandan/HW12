@@ -5,7 +5,7 @@ import services.AccountService;
 import services.CreditCardService;
 
 public class CardToCardMenu2 {
-    public static void show(long creditCardId ,String originCard,String destinationCard, long chargeTransfer) {
+    public static void show(long creditCardId, String originCard, String destinationCard, long chargeTransfer) {
 
         System.out.println("second password: ");
         String secondPassword = ScannerClass.getString();
@@ -20,13 +20,11 @@ public class CardToCardMenu2 {
         CreditCardService creditCardService = new CreditCardService();
         String result = creditCardService.checkingInformation2(creditCardId, secondPassword, cvv2, expirationDate);
 
-        if (result.equals("ok"))
-        {
+        if (result.equals("ok")) {
             System.out.println("changing...");
-            creditCardService.editChangeCharge(originCard,destinationCard,chargeTransfer);
+            creditCardService.editChangeCharge(originCard, destinationCard, chargeTransfer);
             System.out.println("transfer done!");
-        }
-        else System.out.println("information card is not valid");
+        } else System.out.println("information card is not valid");
 
     }
 }

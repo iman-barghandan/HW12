@@ -5,8 +5,7 @@ import services.AccountService;
 import services.CreditCardService;
 
 public class CardToCardMenu {
-    public static void show(long customerId)
-    {
+    public static void show(long customerId) {
         AccountService accountService = new AccountService();
         accountService.selectCreditCardInformation(customerId);
 
@@ -20,12 +19,10 @@ public class CardToCardMenu {
         long chargeTransfer = ScannerClass.getNumber();
 
         CreditCardService creditCardService = new CreditCardService();
-        long creditCardId =  creditCardService.checkingInformation(customerId,originCard,destinationCard,chargeTransfer);
-        if (creditCardId!=0)
-        {
-            CardToCardMenu2.show(creditCardId,originCard,destinationCard,chargeTransfer);
-        }
-        else System.out.println("information is not valid");
+        long creditCardId = creditCardService.checkingInformation(customerId, originCard, destinationCard, chargeTransfer);
+        if (creditCardId != 0) {
+            CardToCardMenu2.show(creditCardId, originCard, destinationCard, chargeTransfer);
+        } else System.out.println("information is not valid");
 
     }
 }

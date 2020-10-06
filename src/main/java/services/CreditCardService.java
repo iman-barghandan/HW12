@@ -56,22 +56,17 @@ public class CreditCardService {
 
     public void editChangeCharge(String originCard, String destinationCard, long chargeTransfer) {
         List<CreditCard> creditCardList = creditCardRepositoryDAO.selectAll();
-        if (creditCardList.size()>0)
-        {
-            for (CreditCard item : creditCardList)
-            {
-                if (item.getCardNumber().equals(originCard))
-                {
-                    item.setCharge(item.getCharge() - (chargeTransfer+500L));
+        if (creditCardList.size() > 0) {
+            for (CreditCard item : creditCardList) {
+                if (item.getCardNumber().equals(originCard)) {
+                    item.setCharge(item.getCharge() - (chargeTransfer + 500L));
                 }
-                if (item.getCardNumber().equals(destinationCard))
-                {
-                    item.setCharge(item.getCharge()+chargeTransfer);
+                if (item.getCardNumber().equals(destinationCard)) {
+                    item.setCharge(item.getCharge() + chargeTransfer);
                 }
             }
         }
     }
-
 
 
 }

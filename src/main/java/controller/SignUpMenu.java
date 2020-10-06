@@ -5,8 +5,7 @@ import services.CustomerService;
 
 public class SignUpMenu {
 
-    public static void showMenu()
-    {
+    public static void showMenu() {
         System.out.println("Name: ");
         String name = ScannerClass.getString();
 
@@ -20,6 +19,6 @@ public class SignUpMenu {
         String password = ScannerClass.getString();
 
         CustomerService customerService = new CustomerService();
-        customerService.signUpCustomer(name,lastName,username,password);
+        customerService.signUpCustomer(name, lastName, username, password);
     }
 }

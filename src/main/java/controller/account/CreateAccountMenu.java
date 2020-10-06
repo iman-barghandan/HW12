@@ -5,8 +5,7 @@ import services.AccountService;
 import services.BankBranchService;
 
 public class CreateAccountMenu {
-    public static void show(long customerId)
-    {
+    public static void show(long customerId) {
         BankBranchService bankBranchService = new BankBranchService();
         bankBranchService.selectBranchBanks();
 
@@ -20,6 +19,6 @@ public class CreateAccountMenu {
         String secondPassword = ScannerClass.getString();
 
         AccountService accountService = new AccountService();
-        accountService.createAccount(customerId,bankBranchId,charge,secondPassword);
+        accountService.createAccount(customerId, bankBranchId, charge, secondPassword);
     }
 }

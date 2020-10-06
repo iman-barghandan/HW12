@@ -16,8 +16,7 @@ public class SignInMenu {
         long customerId = customerService.selectByUserNameAndPassword(userName, password);
         if (customerId != 0) {
             AccountMenu.show(customerId);
-        }
-        else System.out.println("You did not register");
+        } else System.out.println("You did not register");
 
     }
 }

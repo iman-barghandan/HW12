@@ -16,8 +16,7 @@ public class AccountMenu {
                     "(6) exit");
             selectedNumber = ScannerClass.getNumber(1, 6);
 
-            if (selectedNumber == 1)
-            {
+            if (selectedNumber == 1) {
                 CreateAccountMenu.show(customerId);
             } else if (selectedNumber == 2) {
                 AccountService accountService = new AccountService();
@@ -26,10 +25,9 @@ public class AccountMenu {
                 PasswordMenu.show(customerId);
             } else if (selectedNumber == 4) {
                 CardToCardMenu.show(customerId);
-            } else if (selectedNumber==5){
+            } else if (selectedNumber == 5) {
 
-            }
-            else {
+            } else {
                 break;
             }
         }

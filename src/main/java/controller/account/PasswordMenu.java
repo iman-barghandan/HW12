@@ -5,8 +5,7 @@ import services.AccountService;
 import services.CreditCardService;
 
 public class PasswordMenu {
-    public static void show(long customerId)
-    {
+    public static void show(long customerId) {
         AccountService accountService = new AccountService();
         accountService.selectCreditCard(customerId);
 
@@ -17,7 +16,7 @@ public class PasswordMenu {
         String newPassword = ScannerClass.getString();
 
         CreditCardService creditCardService = new CreditCardService();
-        creditCardService.editSecondPasswordByCustomerId(customerId,creditCardId,newPassword);
+        creditCardService.editSecondPasswordByCustomerId(customerId, creditCardId, newPassword);
 
     }
 }
