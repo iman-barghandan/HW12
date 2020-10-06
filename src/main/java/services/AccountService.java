@@ -13,21 +13,18 @@ import java.util.Date;
 import java.util.List;
 
 public class AccountService {
-    AccountRepositoryDAO accountRepositoryDAO= AccountRepositoryDAO.getInstance();
+    AccountRepositoryDAO accountRepositoryDAO = AccountRepositoryDAO.getInstance();
     CustomerRepositoryDAO customerRepositoryDAO = CustomerRepositoryDAO.getInstance();
     BankBranchRepositoryDAO bankBranchRepositoryDAO = BankBranchRepositoryDAO.getInstance();
     CreditCardRepositoryDAO creditCardRepositoryDAO = CreditCardRepositoryDAO.getInstance();
 
-    public void createAccount(long customerId , long bankBranchId , long charge, String secondPassword )
-    {
+    public void createAccount(long customerId, long bankBranchId, long charge, String secondPassword) {
         Customer customer = customerRepositoryDAO.selectById(customerId);
-        if (customer!=null)
-        {
+        if (customer != null) {
             Account account = new Account();
             account.setCustomer(customer);
             BankBranch bankBranch = bankBranchRepositoryDAO.selectById(bankBranchId);
-            if (bankBranch!=null)
-            {
+            if (bankBranch != null) {
                 account.setBankBranch(bankBranch);
                 account.setCreateAccountDate(new Date());
 
@@ -52,19 +49,15 @@ public class AccountService {
     }
 
 
-    public void selectAccountByCustomerId(long customerId)
-    {
+    public void selectAccountByCustomerId(long customerId) {
         List<Account> accountList = accountRepositoryDAO.selectAll();
-        if (accountList.size()>0)
-        {
-            for (Account item : accountList)
-            {
-                if (item.getCustomer().getId()==customerId)
-                {
-                    System.out.println("AccountId: "+item.getId());
+        if (accountList.size() > 0) {
+            for (Account item : accountList) {
+                if (item.getCustomer().getId() == customerId) {
+                    System.out.println("AccountId: " + item.getId());
                     System.out.println("BankBranchName: " + item.getBankBranch().getBankBranchName());
                     System.out.println("CreateAccountDate: " + item.getCreateAccountDate());
-                    System.out.println("CardNumber: "+ item.getCreditCard().getCardNumber());
+                    System.out.println("CardNumber: " + item.getCreditCard().getCardNumber());
                     System.out.println("Charge: " + item.getCreditCard().getCharge());
                     System.out.println("-----------");
                 }
@@ -73,19 +66,33 @@ public class AccountService {
     }
 
 
-    public void selectCreditCard(long customerId)
-    {
+    public void selectCreditCard(long customerId) {
         List<Account> accountList = accountRepositoryDAO.selectAll();
-        if (accountList.size()>0)
-        {
-            for (Account item : accountList)
-            {
-                if (item.getCustomer().getId()==customerId)
-                {
-                    System.out.println("AccountId: "+item.getId());
-                    System.out.println("CreditCardId: "+item.getCreditCard().getId());
-                    System.out.println("CardNumber: "+ item.getCreditCard().getCardNumber());
+        if (accountList.size() > 0) {
+            for (Account item : accountList) {
+                if (item.getCustomer().getId() == customerId) {
+                    System.out.println("AccountId: " + item.getId());
+                    System.out.println("CreditCardId: " + item.getCreditCard().getId());
+                    System.out.println("CardNumber: " + item.getCreditCard().getCardNumber());
                     System.out.println("SecondPassword: " + item.getCreditCard().getSecondPassword());
+                    System.out.println("-----------");
+                }
+            }
+        }
+    }
+
+    public void selectCreditCardInformation(long customerId) {
+        List<Account> accountList = accountRepositoryDAO.selectAll();
+        if (accountList.size() > 0) {
+            for (Account item : accountList) {
+                if (item.getCustomer().getId() == customerId) {
+
+                    System.out.println("CreditCardId: " + item.getCreditCard().getId());
+                    System.out.println("CardNumber: " + item.getCreditCard().getCardNumber());
+                    System.out.println("CVV2: " + item.getCreditCard().getCvv2());
+                    System.out.println("ExpirationDate: " + item.getCreditCard().getExpirationDate());
+                    System.out.println("SecondPassword: " + item.getCreditCard().getSecondPassword());
+                    System.out.println("Charge: " + item.getCreditCard().getCharge());
                     System.out.println("-----------");
                 }
             }
