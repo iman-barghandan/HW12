@@ -16,7 +16,7 @@ public class AccountMenu {
 
             if (selectedNumber == 1)
             {
-
+                CreateAccountMenu.show(customerId);
             } else if (selectedNumber == 2) {
 
 

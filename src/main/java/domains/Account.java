@@ -76,4 +76,12 @@ public class Account {
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
+
+    public Date getCreateAccountDate() {
+        return createAccountDate;
+    }
+
+    public void setCreateAccountDate(Date createAccountDate) {
+        this.createAccountDate = createAccountDate;
+    }
 }
