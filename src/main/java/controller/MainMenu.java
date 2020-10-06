@@ -16,7 +16,7 @@ public class MainMenu {
             if (selectedNumber == 1) {
 
             } else if (selectedNumber == 2) {
-
+                SignUpMenu.showMenu();
             } else if (selectedNumber == 3) {
 
             } else {

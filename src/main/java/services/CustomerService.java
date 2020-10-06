@@ -8,7 +8,7 @@ import java.util.Date;
 public class CustomerService {
     CustomerRepositoryDAO customerRepositoryDAO = CustomerRepositoryDAO.getInstance();
 
-    public void insertCustomer(String name ,String lastName,String username,String password ){
+    public void signUpCustomer(String name ,String lastName,String username,String password ){
         Customer customer = new Customer();
         customer.setName(name);
         customer.setLastName(lastName);
