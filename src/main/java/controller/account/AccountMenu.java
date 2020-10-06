@@ -26,7 +26,7 @@ public class AccountMenu {
             } else if (selectedNumber == 4) {
                 CardToCardMenu.show(customerId);
             } else if (selectedNumber == 5) {
-
+                TransactionMenu.show(customerId);
             } else {
                 break;
             }

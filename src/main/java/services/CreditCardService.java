@@ -1,15 +1,20 @@
 package services;
 
+import domains.Account;
 import domains.CreditCard;
 import domains.Customer;
+import domains.Transaction;
 import repositories.CreditCardRepositoryDAO;
 import repositories.CustomerRepositoryDAO;
+import repositories.TransactionRepositoryDAO;
 
+import java.util.Date;
 import java.util.List;
 
 public class CreditCardService {
     CustomerRepositoryDAO customerRepositoryDAO = CustomerRepositoryDAO.getInstance();
     CreditCardRepositoryDAO creditCardRepositoryDAO = CreditCardRepositoryDAO.getInstance();
+    TransactionRepositoryDAO transactionRepositoryDAO = TransactionRepositoryDAO.getInstance();
 
     public void editSecondPasswordByCustomerId(long customerId, long creditCardId, String newPassword) {
         CreditCard creditCard = creditCardRepositoryDAO.selectById(creditCardId);
@@ -56,10 +61,20 @@ public class CreditCardService {
 
     public void editChangeCharge(String originCard, String destinationCard, long chargeTransfer) {
         List<CreditCard> creditCardList = creditCardRepositoryDAO.selectAll();
-        if (creditCardList.size() > 0) {
-            for (CreditCard item : creditCardList) {
-                if (item.getCardNumber().equals(originCard)) {
+        if (creditCardList.size() > 0)
+        {
+            for (CreditCard item : creditCardList)
+            {
+                if (item.getCardNumber().equals(originCard))
+                {
                     item.setCharge(item.getCharge() - (chargeTransfer + 500L));
+                    Account account = item.getAccount();
+                    Transaction transaction = new Transaction();
+                    transaction.setTransactionDate(new Date());
+                    transaction.setCost(chargeTransfer);
+                    transaction.setCreditCardDestination(destinationCard);
+                    transaction.setAccount(account);
+                    transactionRepositoryDAO.save(transaction);
                 }
                 if (item.getCardNumber().equals(destinationCard)) {
                     item.setCharge(item.getCharge() + chargeTransfer);
