@@ -1,5 +1,6 @@
 package controller;
 
+import controller.account.AccountMenu;
 import scanner.ScannerClass;
 import services.CustomerService;
 
@@ -14,8 +15,7 @@ public class SignInMenu {
         CustomerService customerService = new CustomerService();
         long customerId = customerService.selectByUserNameAndPassword(userName, password);
         if (customerId != 0) {
-            System.out.println("okkkkkkk");
-            // TODO: 10/6/2020
+            AccountMenu.show(customerId);
         }
         else System.out.println("You did not register");
 

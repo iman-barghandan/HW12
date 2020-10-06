@@ -9,7 +9,7 @@ public class MainMenu {
         {
             System.out.println("(1) Sign-In Customer\n" +
                     "(2) Sign-Up Customer\n" +
-                    "(3) Create Account\n" +
+                    "(3) Create BankBranch\n" +
                     "(4) End program");
             selectedNumber = ScannerClass.getNumber(1, 4);
 
@@ -17,9 +17,10 @@ public class MainMenu {
                 SignInMenu.show();
             } else if (selectedNumber == 2) {
                 SignUpMenu.showMenu();
-            } else if (selectedNumber == 3) {
-
-            } else {
+            } else if (selectedNumber ==3){
+                CreateBankMenu.show();
+            }
+            else {
                 break;
             }
         }

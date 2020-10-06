@@ -11,6 +11,9 @@ public class BankBranch {
     @Column(nullable = false)
     private long id;
 
+    @Column(nullable = false,unique = true)
+    private String bankBranchName;
+
     @OneToMany(mappedBy = "bankBranch", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Account> accountList = new ArrayList<>();
 
@@ -32,5 +35,13 @@ public class BankBranch {
 
     public void setAccountList(List<Account> accountList) {
         this.accountList = accountList;
+    }
+
+    public String getBankBranchName() {
+        return bankBranchName;
+    }
+
+    public void setBankBranchName(String bankBranchName) {
+        this.bankBranchName = bankBranchName;
     }
 }
