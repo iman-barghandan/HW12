@@ -1,6 +1,7 @@
 package controller.account;
 
 import scanner.ScannerClass;
+import services.AccountService;
 
 public class AccountMenu {
     public static void show(long customerId) {
@@ -11,22 +12,25 @@ public class AccountMenu {
                     "(2) show all account\n" +
                     "(3) edit credit card password\n" +
                     "(4) card to card\n" +
-                    "(5) exit");
-            selectedNumber = ScannerClass.getNumber(1, 5);
+                    "(5) transactions\n" +
+                    "(6) exit");
+            selectedNumber = ScannerClass.getNumber(1, 6);
 
             if (selectedNumber == 1)
             {
                 CreateAccountMenu.show(customerId);
             } else if (selectedNumber == 2) {
-
-
+                AccountService accountService = new AccountService();
+                accountService.selectAccountByCustomerId(customerId);
             } else if (selectedNumber == 3) {
-
-
+                PasswordMenu.show(customerId);
             } else if (selectedNumber == 4) {
 
 
-            } else{
+            } else if (selectedNumber==5){
+
+            }
+            else {
                 break;
             }
         }
