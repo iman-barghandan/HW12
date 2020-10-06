@@ -23,7 +23,7 @@ public class CardToCardMenu {
         long creditCardId =  creditCardService.checkingInformation(customerId,originCard,destinationCard,chargeTransfer);
         if (creditCardId!=0)
         {
-            CardToCardMenu2.show(creditCardId);
+            CardToCardMenu2.show(creditCardId,originCard,destinationCard,chargeTransfer);
         }
         else System.out.println("information is not valid");
 
